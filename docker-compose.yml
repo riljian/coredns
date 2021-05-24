@@ -1,12 +1,12 @@
-version: '2.2'
+version: '3.8'
 
 services:
   coredns:
     image: coredns/coredns
     container_name: coredns_dns
     ports:
-      - "53:53/udp"
-      - "53:53/tcp"
+      - "192.168.56.101:53:53/udp"
+      - "192.168.56.101:53:53/tcp"
     volumes:
       - ${PWD}/Corefile:/Corefile
-      - /etc/hosts:/etc/hosts
+      - /etc/hosts:/kubernetes.hosts:ro
