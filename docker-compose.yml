@@ -4,28 +4,9 @@ services:
   coredns:
     image: coredns/coredns
     container_name: coredns_dns
-    depends_on:
-      - redis
     ports:
-      - "1053:53/udp"
-      - "1053:53/tcp"
-    environment:
-      REDIS_PASSWORD: ${REDIS_PASSWORD}
-    networks:
-      default_net:
-        ipv4_address: 172.16.0.2
-  redis:
-    image: redis
-    container_name: coredns_redis
-    command: redis-server --requirepass ${REDIS_PASSWORD}
-    networks:
-      default_net:
-        ipv4_address: 172.16.0.3
-
-networks:
-  default_net:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.16.0.0/24
+      - "53:53/udp"
+      - "53:53/tcp"
+    volumes:
+      - ${PWD}/Corefile:/Corefile
+      - /etc/hosts:/etc/hosts

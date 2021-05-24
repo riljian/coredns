@@ -1,0 +1,6 @@
+. {
+  hosts
+  whoami
+  log
+  errors
+}

@@ -1,5 +1,6 @@
 ## Setup
 
 ```sh
-REDIS_PASSWORD=$(openssl rand -base64 16) docker-compose up -d && echo "redis password: ${REDIS_PASSWORD}"
+# it would load DNS RRs from /etc/hosts
+docker-compose up -d
 ```
